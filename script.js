@@ -7,7 +7,7 @@ let clock = {
         textTime: document.querySelector('h1'),
         btn: document.querySelector('button')
     },
-    generateUI(){
+    generateAnalogUI(){
 
         let minute = this.time.split(':')[1]*6;
         let hour = this.time.split(':')[0]*30 + ((this.time.split(':')[1]*1)/2); // hour + overshoot
@@ -34,6 +34,9 @@ let clock = {
             return `Klockan är <b>${minuteText} ${hourText}</b>.`;
         }
     },
+    generateDigitalUI(){
+
+    },
     randomTime(){
         this.time = null; // reset time
 
@@ -44,14 +47,17 @@ let clock = {
     },
     setClock(){
         this.randomTime();
-        this.generateUI();
+        this.generateAnalogUI();
+        this.generateDigitalUI();
 
         this.els.btn.addEventListener('click', () => {
             this.els.textTime.innerHTML = this.generateText();
+            this.els.btn.innerText = 'Klicka på klockan!'
         });
-
+        
         this.els.face.addEventListener('click', () => {
             this.els.textTime.innerHTML = '';
+            this.els.btn.innerText = 'Visa tiden i text'
             this.setClock();
         })
         
