@@ -52,7 +52,7 @@ let clock = {
 
         this.els.btn.addEventListener('click', () => {
             this.els.textTime.innerHTML = this.generateText();
-            this.els.btn.innerText = 'Klicka på klockan!'
+            this.els.btn.innerText = 'Klicka på klockan för ny tid'
         });
         
         this.els.face.addEventListener('click', () => {
